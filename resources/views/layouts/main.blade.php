@@ -16,14 +16,14 @@
 
 </head>
 
-<body>
+<body class="m-1">
     <header>
 
         <nav class="navbar">
-            <h1>Portal de Notícias</h1>
+            <h1>Gerenciador de Documentos</h1>
             <div>
-                <a href="/" class="btn btn-secondary">Ir para o portal</a>
-                <a href="/news/create" class="btn btn-secondary">Cadastrar Notícia</a>
+                <a href="/" class="btn btn-secondary">Cadastre-se</a>
+                <a href="/news/create" class="btn btn-secondary">Login</a>
 
             </div>
         </nav>
