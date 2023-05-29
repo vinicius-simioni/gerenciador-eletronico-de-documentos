@@ -4,7 +4,8 @@
 
 @section('content')
 
-<form>
+<form method="POST" action="{{ route('login')}}">
+    @csrf
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" name="nome">

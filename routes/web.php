@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CadastroController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +18,4 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/cadastro', [CadastroController::class, 'index']);
+Route::get('/cadastro', [UserController::class, 'index']);
