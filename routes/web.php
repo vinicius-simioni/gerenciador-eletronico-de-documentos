@@ -18,4 +18,6 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/cadastro', [UserController::class, 'index']);
+Route::get('/cadastro', [UserController::class, 'index'])->name('cadastro');
+
+Route::post('/cadastro', [UserController::class, 'store'])->name('cadastro');

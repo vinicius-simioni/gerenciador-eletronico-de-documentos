@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('login')}}">
+<form method="POST" action="{{ route('cadastro')}}" class="mx-25">
     @csrf
     <div class="form-group">
         <label for="nome">Nome</label>

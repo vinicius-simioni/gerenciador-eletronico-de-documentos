@@ -9,4 +9,8 @@ class UserController extends Controller
     public function index(){
         return view('cadastro');
     }
+
+    public function store(Request $request){
+        dd($request);
+    }
 }
