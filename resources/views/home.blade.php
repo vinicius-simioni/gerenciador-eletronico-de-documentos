@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Cadastrar Notícia')
+@section('title', 'Home')
 
 @section('buttons')
 

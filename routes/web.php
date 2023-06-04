@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +27,5 @@ Route::post('/cadastro', [UserController::class, 'store'])->name('cadastro');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
