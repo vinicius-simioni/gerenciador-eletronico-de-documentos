@@ -21,6 +21,9 @@ class UserController extends Controller
         $request['password'] = Hash::make($request['password']);
 
         $user = User::create($request);
+
+        return redirect()->route('dashboard');
+
     }
 
     public function login(Request $request)
