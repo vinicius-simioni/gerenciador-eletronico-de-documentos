@@ -25,25 +25,23 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        // Post == gravando
+
         if (request()->isMethod('POST')) {
-            /* Esse é o tipo de validação "inline"
-                    É diferente da validação que fizemos
-                    criando um Request específico
-                    como o EstoqueRequest */
+
             $login = $request->validate([
-                'name' => 'required',
+                'email' => 'required',
                 'password' => 'required',
             ]);
 
             if (Auth::attempt($login)) {
-                return redirect()->route('estoque');
+                return redirect()->route('home');
             } else {
-                return redirect()->route('user.login')->with('erro', 'Usuário ou senha inválidos');
+                return redirect()->route('login')->with('erro', 'Usuário ou senha inválidos');
             }
         }
 
         // Se não é post, mostra a view normalmente
+        
         return view('login');
     }
 

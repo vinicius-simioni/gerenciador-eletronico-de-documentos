@@ -22,7 +22,7 @@
         <h1>Gerenciador de Documentos</h1>
         <div>
             <a href="/cadastro" class="btn btn-secondary">Cadastre-se</a>
-            <a href="/news/create" class="btn btn-secondary">Login</a>
+            <a href="/login" class="btn btn-secondary">Login</a>
 
         </div>
     </nav>
