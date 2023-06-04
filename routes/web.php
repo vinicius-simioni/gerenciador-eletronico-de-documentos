@@ -28,4 +28,6 @@ Route::get('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
