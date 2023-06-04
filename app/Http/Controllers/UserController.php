@@ -34,14 +34,14 @@ class UserController extends Controller
             ]);
 
             if (Auth::attempt($login)) {
-                return redirect()->route('home');
+                return redirect()->route('dashboard');
             } else {
                 return redirect()->route('login')->with('erro', 'Usuário ou senha inválidos');
             }
         }
 
         // Se não é post, mostra a view normalmente
-        
+
         return view('login');
     }
 

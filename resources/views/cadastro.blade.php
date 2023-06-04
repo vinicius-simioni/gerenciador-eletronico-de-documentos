@@ -2,6 +2,12 @@
 
 @section('title', 'Cadastre-se')
 
+@section('buttons')
+
+<a href="/login" class="btn btn-secondary">Login</a>
+
+@endsection
+
 @section('content')
 
 <form method="POST" action="{{ route('cadastro')}}" class="mx-25">

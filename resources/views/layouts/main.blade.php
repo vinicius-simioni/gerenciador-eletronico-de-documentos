@@ -21,9 +21,7 @@
     <nav class="navbar">
         <h1>Gerenciador de Documentos</h1>
         <div>
-            <a href="/cadastro" class="btn btn-secondary">Cadastre-se</a>
-            <a href="/login" class="btn btn-secondary">Login</a>
-
+            @yield('buttons')
         </div>
     </nav>
 
