@@ -9,7 +9,7 @@
     @if(session('msg'))
     <p class="alert alert-success"> {{ session('msg') }}</p>
     @endif
-    <form action="/news" method="POST" enctype="multipart/form-data">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
         @csrf
         <!-- titulo -->
         <div class="form-group">

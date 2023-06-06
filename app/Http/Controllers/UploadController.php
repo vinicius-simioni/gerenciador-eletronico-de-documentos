@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use Illuminate\Http\Request;
 
 class UploadController extends Controller
@@ -11,7 +12,7 @@ class UploadController extends Controller
      */
     public function index()
     {
-        //
+        return view('upload');
     }
 
     /**
@@ -19,12 +20,12 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        $news = new Event;
+        $document = new Document;
 
-        $news->titulo = $request->titulo;
-        $news->descricao = $request->descricao;
-        $news->imagem = $request->imagem;
-        $news->autor = $request->autor;
+        $document->titulo = $request->titulo;
+        $document->descricao = $request->descricao;
+        $document->imagem = $request->imagem;
+        $document->autor = $request->autor;
 
         //Upload da imagem
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
@@ -37,11 +38,11 @@ class UploadController extends Controller
 
             $requestImagem->move(public_path('img/news'), $nomeImagem);
 
-            $news->imagem = $nomeImagem;
+            $document->imagem = $nomeImagem;
 
         }
 
-        $news->save();
+        $document->save();
 
         return redirect('/news/create')->with('msg', 'Notícia cadastrada com sucesso');
     }
