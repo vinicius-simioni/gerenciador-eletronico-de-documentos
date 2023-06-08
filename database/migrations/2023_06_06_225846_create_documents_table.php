@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('arquivo');
-            $table->integer('users_id')->nullable();
+            $table->integer('user_id');
             $table->integer('shared_user_id')->nullable();
             $table->timestamps();
         });

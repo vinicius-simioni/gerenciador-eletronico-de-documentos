@@ -38,6 +38,8 @@ class UploadController extends Controller
 
         }
 
+        $document->user_id = $request->user()->id;
+
         $document->save();
 
     }
