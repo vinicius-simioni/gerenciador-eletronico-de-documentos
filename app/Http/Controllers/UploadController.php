@@ -21,30 +21,25 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $document = new Document;
+        $document->arquivo = $request->arquivo;
 
-        $document->titulo = $request->titulo;
-        $document->descricao = $request->descricao;
-        $document->imagem = $request->imagem;
-        $document->autor = $request->autor;
+        //Upload do arquivo
+        if($request->hasFile('arquivo') && $request->file('arquivo')->isValid()) {
 
-        //Upload da imagem
-        if($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
+            $requestArquivo = $request->arquivo;
 
-            $requestImagem = $request->imagem;
+            $extension = $requestArquivo->extension();
 
-            $extension = $requestImagem->extension();
+            $nomeArquivo = md5($requestArquivo->getClientOriginalName() . strtotime('now')) . "." . $extension;
 
-            $nomeImagem = md5($requestImagem->getClientOriginalName() . strtotime('now')) . "." . $extension;
+            $requestArquivo->move(public_path('/arquivos'), $nomeArquivo);
 
-            $requestImagem->move(public_path('img/news'), $nomeImagem);
-
-            $document->imagem = $nomeImagem;
+            $document->arquivo = $nomeArquivo;
 
         }
 
         $document->save();
 
-        return redirect('/news/create')->with('msg', 'Notícia cadastrada com sucesso');
     }
 
     /**
