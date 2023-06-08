@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,7 +12,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+
+        $dados = Document::all(); //seleciona dados banco
+
+        return view('dashboard', ['dados' => $dados]);
     }
 
     /**
