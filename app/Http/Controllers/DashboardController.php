@@ -47,6 +47,10 @@ class DashboardController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $document = Document::findOrFail($id);
+
+        $document->delete();
+
+        return redirect('dashboard');
     }
 }
