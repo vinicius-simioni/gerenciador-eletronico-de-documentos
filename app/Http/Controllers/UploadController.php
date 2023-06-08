@@ -28,11 +28,9 @@ class UploadController extends Controller
 
             $requestArquivo = $request->arquivo;
 
-            $extension = $requestArquivo->extension();
+            $nomeArquivo = $requestArquivo->getClientOriginalName();
 
-            $nomeArquivo = md5($requestArquivo->getClientOriginalName() . strtotime('now')) . "." . $extension;
-
-            $requestArquivo->move(public_path('/arquivos'), $nomeArquivo);
+            $requestArquivo->move(public_path($request->user()->id), $nomeArquivo);
 
             $document->arquivo = $nomeArquivo;
 
