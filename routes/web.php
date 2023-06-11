@@ -33,7 +33,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-Route::get('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard/destroy');
+Route::get('/dashboard/{id}/{arquivo}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
 
 Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middleware('auth');
 

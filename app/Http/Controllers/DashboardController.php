@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {
@@ -45,12 +46,20 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, string $arquivo)
     {
+
         $document = Document::findOrFail($id);
 
         $document->delete();
 
+        $caminho = public_path(auth()->user()->id."/".$arquivo);
+
+        if(File::exists($caminho)){
+            File::delete($caminho);
+        }
+
         return redirect('dashboard');
+
     }
 }
