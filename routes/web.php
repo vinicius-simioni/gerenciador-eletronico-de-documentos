@@ -37,7 +37,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::get('/dashboard/{id}/{arquivo}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
 
-Route::get('/dashboard/file', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
+Route::get('/dashboard/{arquivo}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
 
 
 
