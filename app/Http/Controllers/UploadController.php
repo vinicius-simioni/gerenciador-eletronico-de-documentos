@@ -40,6 +40,8 @@ class UploadController extends Controller
 
         $document->save();
 
+        return redirect('dashboard');
+
     }
 
     /**

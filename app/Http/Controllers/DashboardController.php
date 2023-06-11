@@ -14,7 +14,8 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $dados = Document::all(); //seleciona dados banco
+        $dados = Document::where('user_id', auth()->user()->id)
+                        ->get(); //seleciona dados banco
 
         return view('dashboard', ['dados' => $dados]);
     }
@@ -61,5 +62,9 @@ class DashboardController extends Controller
 
         return redirect('dashboard');
 
+    }
+
+    public function return_file(){
+        return response()->file(public_path(auth()->user()->id."/".'trabalho.pdf'));
     }
 }

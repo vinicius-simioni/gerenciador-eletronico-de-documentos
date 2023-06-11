@@ -24,7 +24,9 @@
   <tr>
     <td>{{ $dado->arquivo }}</td>
     <td>{{ $dado->updated_at }}</td>
-    <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'arquivo' => $dado['arquivo']]) }}" class="btn btn-danger">Excluir</a> </td>
+    <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'arquivo' => $dado['arquivo']]) }}" class="btn btn-danger">Excluir</a>
+    
+    </td>
   </tr>
   @endforeach
 </table>

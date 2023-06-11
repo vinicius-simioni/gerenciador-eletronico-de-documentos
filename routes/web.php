@@ -31,9 +31,17 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
+
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::get('/dashboard/{id}/{arquivo}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
+
+Route::get('/dashboard/file', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
+
+
+
+
 
 Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middleware('auth');
 
