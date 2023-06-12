@@ -12,8 +12,8 @@
 @section('content')
 
 
-<div class="mx-auto w-25">
-  <table class="table table-dark table-striped-columns">
+<div class="mx-auto w-75">
+  <table class="table table-striped-columns">
     <tr>
       <th>Nome</th>
       <th>Adicionado em</th>
@@ -25,6 +25,7 @@
       <td>{{ $dado->updated_at }}</td>
       <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'arquivo' => $dado['arquivo']]) }}" class="btn btn-danger">Excluir</a>
         <a href="{{ route('dashboard/file', ['arquivo' => $dado['arquivo']]) }}" class="btn btn-primary">Abrir</a>
+        <a href="{{ route('dashboard/file', ['arquivo' => $dado['arquivo']]) }}" class="btn btn-secondary">Compartilhar</a>
       </td>
     </tr>
     @endforeach

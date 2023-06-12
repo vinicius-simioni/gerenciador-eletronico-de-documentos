@@ -24,7 +24,7 @@
             @yield('buttons')
         </div>
     </nav>
-
+<hr>
 </header>
 
 
