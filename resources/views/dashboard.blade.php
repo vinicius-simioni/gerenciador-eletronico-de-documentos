@@ -11,27 +11,28 @@
 
 @section('content')
 
-<main>
 
-<table class="table table-dark table-striped-columns">
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Adicionado em</th>
-    <th>Ações</th>
-  </tr>
-  @foreach($dados as $dado)
-  <tr>
-    <td>{{ $dado->arquivo }}</td>
-    <td>{{ $dado->updated_at }}</td>
-    <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'arquivo' => $dado['arquivo']]) }}" class="btn btn-danger">Excluir</a>
-         <a href="{{ route('dashboard/file', ['arquivo' => $dado['arquivo']]) }}" class="btn btn-primary">Abrir</a>
+<div class="mx-auto w-25">
+  <table class="table table-dark table-striped-columns">
+    <tr>
+      <th>Nome</th>
+      <th>Adicionado em</th>
+      <th>Ações</th>
+    </tr>
+    @foreach($dados as $dado)
+    <tr>
+      <td>{{ $dado->arquivo }}</td>
+      <td>{{ $dado->updated_at }}</td>
+      <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'arquivo' => $dado['arquivo']]) }}" class="btn btn-danger">Excluir</a>
+        <a href="{{ route('dashboard/file', ['arquivo' => $dado['arquivo']]) }}" class="btn btn-primary">Abrir</a>
+      </td>
+    </tr>
+    @endforeach
+  </table>
+</div>
 
-    </td>
-  </tr>
-  @endforeach
-</table>
-</table>
+
+
 
 
 @endsection
