@@ -23,7 +23,5 @@
         <button type="submit" class="btn btn-success mt-1">Login</button>
     </form>
 
-</div>
-
 
 @endsection

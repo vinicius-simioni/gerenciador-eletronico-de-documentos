@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ShareController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
@@ -41,9 +42,10 @@ Route::get('/dashboard/{arquivo}', [DashboardController::class, 'return_file'])-
 
 
 
-
-
 Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middleware('auth');
 
 Route::post('/upload', [UploadController::class, 'store'])->name('upload')->middleware('auth');
+
+
+Route::get('/share', [ShareController::class, 'index'])->name('share')->middleware('auth');
 

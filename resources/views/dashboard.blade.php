@@ -25,7 +25,7 @@
       <td>{{ $dado->updated_at }}</td>
       <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'arquivo' => $dado['arquivo']]) }}" class="btn btn-danger">Excluir</a>
         <a href="{{ route('dashboard/file', ['arquivo' => $dado['arquivo']]) }}" class="btn btn-primary">Abrir</a>
-        <a href="{{ route('dashboard/file', ['arquivo' => $dado['arquivo']]) }}" class="btn btn-secondary">Compartilhar</a>
+        <a href="{{ route('share') }}" class="btn btn-secondary">Compartilhar</a>
       </td>
     </tr>
     @endforeach

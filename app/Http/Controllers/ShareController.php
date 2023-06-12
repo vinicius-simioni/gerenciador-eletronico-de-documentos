@@ -12,7 +12,7 @@ class ShareController extends Controller
      */
     public function index()
     {
-        //
+        return view('share');
     }
 
     /**
