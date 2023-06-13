@@ -23,8 +23,11 @@ class ShareController extends Controller
         }
 
         $name = $request->input('name');
-        $users = User::where('name', 'like', '%' . $name . '%')->get();
+        $users = User::select('id', 'name', 'email')
+        ->where('name', 'like', '%' . $name . '%')
+        ->get();
 
+        dd($users);
         return view('share', ['dados' => $users]);
 
     }
