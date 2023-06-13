@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Share;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ShareController extends Controller
@@ -13,6 +14,18 @@ class ShareController extends Controller
     public function index()
     {
         return view('share');
+    }
+
+    public function get_names(Request $request) {
+
+        if($request == null){
+            die;
+        }
+
+        $users = User::all();
+
+        return view('share', ['dados' => $users]);
+
     }
 
     /**

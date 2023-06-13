@@ -10,10 +10,11 @@
 
 @section('content')
 
-<form class="form">
-  <div class="flex">
-    <input type="text" class="form-control" name="name" id="name" placeholder="Digite o nome">
-  <button type="submit" class="btn btn-primary">Buscar</button>
+<form class="form w-75 mx-auto" method="POST" action="{{ route('share/get_names') }}">
+  @csrf
+  <div class="d-flex">
+    <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome">
+    <button type="submit" class="btn btn-primary">Buscar</button>
   </div>
 </form>
 
