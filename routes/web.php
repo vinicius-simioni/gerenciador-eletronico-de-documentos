@@ -34,6 +34,9 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
+
+
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::get('/dashboard/{id}/{arquivo}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
@@ -42,9 +45,18 @@ Route::get('/dashboard/{arquivo}', [DashboardController::class, 'return_file'])-
 
 
 
+
+
+
+
 Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middleware('auth');
 
 Route::post('/upload', [UploadController::class, 'store'])->name('upload')->middleware('auth');
+
+
+
+
+
 
 
 Route::get('/share', [ShareController::class, 'index'])->name('share')->middleware('auth');

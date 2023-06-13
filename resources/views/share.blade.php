@@ -19,7 +19,7 @@
 </form>
 
 
-@if ($dados)
+@if (isset($dados))
 <table class="table">
   <thead>
     <tr>
