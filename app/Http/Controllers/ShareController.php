@@ -27,7 +27,6 @@ class ShareController extends Controller
         ->where('name', 'like', '%' . $name . '%')
         ->get();
 
-        dd($users);
         return view('share', ['dados' => $users]);
 
     }

@@ -10,7 +10,7 @@
 
 @section('content')
 
-<form class="form w-75 mx-auto" method="POST" action="{{ route('share/get_names') }}">
+<form class="form w-75 mx-auto mb-3" method="POST" action="{{ route('share/get_names') }}">
   @csrf
   <div class="d-flex">
     <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome">
@@ -20,8 +20,8 @@
 
 
 @if (isset($dados))
-<table class="table">
-  <thead>
+<table class="table table-striped table-bordered w-75 mx-auto">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
