@@ -18,4 +18,24 @@
   </div>
 </form>
 
+
+@if ($dados)
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($dados as $usuario)
+    <tr>
+      <td>{{ $usuario->name }}</td>
+      <td>{{ $usuario->email }}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+@endif
+
 @endsection
