@@ -20,22 +20,31 @@
 
 
 @if (isset($dados))
-<table class="table table-striped table-bordered w-75 mx-auto">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($dados as $usuario)
-    <tr>
-      <td>{{ $usuario->name }}</td>
-      <td>{{ $usuario->email }}</td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+<form method="POST" action="#">
+  @csrf
+  <table class="table table-striped table-bordered w-75 mx-auto">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Selecionar</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($dados as $usuario)
+      <tr>
+        <td><input type="checkbox" name="selecionar" value="{{ $usuario->id }}"></td>
+        <td>{{ $usuario->name }}</td>
+        <td>{{ $usuario->email }}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary float-right">Enviar</button>
+  </div>
+</form>
 @endif
 
 @endsection
