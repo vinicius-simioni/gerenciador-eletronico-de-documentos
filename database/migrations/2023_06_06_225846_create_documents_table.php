@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('arquivo');
+            $table->string('nome');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

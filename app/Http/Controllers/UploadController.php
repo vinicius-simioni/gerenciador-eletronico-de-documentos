@@ -21,7 +21,7 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $document = new Document;
-        $document->arquivo = $request->arquivo;
+        $document->nome = $request->nome;
 
         //Upload do arquivo
         if($request->hasFile('arquivo') && $request->file('arquivo')->isValid()) {
@@ -37,6 +37,8 @@ class UploadController extends Controller
         }
 
         $document->user_id = $request->user()->id;
+
+        $document->text = null;
 
         $document->save();
 
