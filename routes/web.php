@@ -67,3 +67,4 @@ Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('shar
 
 
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');
+Route::post('/editor', [EditorController::class, 'store'])->name('editor')->middleware('auth');

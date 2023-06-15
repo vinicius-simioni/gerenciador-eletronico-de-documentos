@@ -20,7 +20,14 @@ class EditorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $content = $request->input('content');
+
+        $model = new Editor();
+        $model->content = $content;
+        $model->save();
+    
+        return response()->json(['message' => 'Content saved successfully']);
     }
 
     /**
