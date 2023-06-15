@@ -40,9 +40,9 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-Route::get('/dashboard/{id}/{arquivo}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
+Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
 
-Route::get('/dashboard/{arquivo}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
+Route::get('/dashboard/{name}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
 
 
 

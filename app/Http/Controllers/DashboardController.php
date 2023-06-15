@@ -65,6 +65,9 @@ class DashboardController extends Controller
     }
 
     public function return_file(string $arquivo){
+
+        
+
         return response()->file(public_path(auth()->user()->id."/".$arquivo));
     }
 }

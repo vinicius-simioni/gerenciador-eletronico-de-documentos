@@ -20,9 +20,10 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-<form method="POST" action="{{ route('editor') }}">
+<form method="POST" action="{{ route('upload') }}">
   @csrf
-  <textarea id="summernote" name="summernote"></textarea>
+  <input type="text" name="name" id="name">
+  <textarea id="summernote" name="text"></textarea>
   <script>
     $(document).ready(function() {
       $('#summernote').summernote();

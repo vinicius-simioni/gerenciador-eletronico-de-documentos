@@ -22,10 +22,10 @@
     </tr>
     @foreach($dados as $dado)
     <tr>
-      <td>{{ $dado->arquivo }}</td>
+      <td>{{ $dado->name }}</td>
       <td>{{ $dado->updated_at }}</td>
-      <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'arquivo' => $dado['arquivo']]) }}" class="btn btn-danger">Excluir</a>
-        <a href="{{ route('dashboard/file', ['arquivo' => $dado['arquivo']]) }}" class="btn btn-primary">Abrir</a>
+      <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger">Excluir</a>
+        <a href="{{ route('dashboard/file', ['name' => $dado['name']]) }}" class="btn btn-primary">Abrir</a>
         <a href="{{ route('share') }}" class="btn btn-secondary">Compartilhar</a>
       </td>
     </tr>

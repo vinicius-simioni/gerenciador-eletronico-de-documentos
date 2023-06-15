@@ -21,12 +21,20 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $document = new Document;
-        $document->nome = $request->nome;
+        $document->name = $request->name;
+
+        if(!empty($request->text)){
+            $document->name = $request->name;
+            $document->user_id = $request->user()->id;
+            $document->text = $request->text;
+            $document->save();
+            return redirect('dashboard');
+        }
 
         //Upload do arquivo
-        if($request->hasFile('arquivo') && $request->file('arquivo')->isValid()) {
+        if($request->hasFile('nome') && $request->file('nome')->isValid()) {
 
-            $requestArquivo = $request->arquivo;
+            $requestArquivo = $request->nome;
 
             $nomeArquivo = $requestArquivo->getClientOriginalName();
 
