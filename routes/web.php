@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ShareController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
@@ -63,3 +64,6 @@ Route::get('/share', [ShareController::class, 'index'])->name('share')->middlewa
 
 Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
 
+
+
+Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');

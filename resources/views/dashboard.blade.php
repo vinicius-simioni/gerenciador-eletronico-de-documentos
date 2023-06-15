@@ -4,6 +4,7 @@
 
 @section('buttons')
 
+<a href='/editor' class="btn btn-success">Criar</a>
 <a href="/upload" class="btn btn-primary">Upload de Arquivo</a>
 <a href="/logout" class="btn btn-secondary">Sair</a>
 
