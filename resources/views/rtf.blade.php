@@ -10,6 +10,6 @@
 
 @section('content')
 
-{{ $dado->text }}
+{{ $file->text }}
 
 @endsection

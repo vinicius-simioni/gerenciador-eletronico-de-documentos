@@ -36,16 +36,11 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
-
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
 
 Route::get('/dashboard/file/{id}/{name}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
-
-
-
 
 
 
@@ -57,14 +52,13 @@ Route::post('/upload', [UploadController::class, 'store'])->name('upload')->midd
 
 
 
-
-
-
 Route::get('/share', [ShareController::class, 'index'])->name('share')->middleware('auth');
 
 Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
 
 
 
+
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');
 Route::post('/editor', [EditorController::class, 'store'])->name('editor')->middleware('auth');
+Route::get('/show', [EditorController::class, 'show'])->name('show')->middleware('auth');

@@ -64,14 +64,12 @@ class DashboardController extends Controller
 
     }
 
-    public function return_file(string $arquivo, string $id){
-
-        dd($id);
+    public function return_file(string $id, string $arquivo){
 
         $file = Document::buscaDocumento($id);
 
         if(!empty($file->text)){
-            return redirect('rtf')->with($file);
+            return redirect('show')->with('file', $file->text);
         }
 
         return response()->file(public_path(auth()->user()->id."/".$arquivo));

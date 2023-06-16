@@ -20,7 +20,7 @@ class EditorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('rtf');
     }
 
     /**
