@@ -27,7 +27,12 @@ class UploadController extends Controller
             $document->name = $request->name;
             $document->user_id = $request->user()->id;
             $document->text = $request->text;
-            $document->save();
+
+            if(isset($request->id)){
+                $document->id = $request->id;
+            }
+
+            $document->updateOrCreate(['id' => $document->id], $document->toArray());
             return redirect('dashboard');
         }
 

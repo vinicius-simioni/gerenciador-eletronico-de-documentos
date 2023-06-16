@@ -12,4 +12,10 @@ class Document extends Model
     public static function buscaDocumento($id) {
         return self::find($id);
     }
+
+    protected $fillable = [
+        'name',
+        'user_id',
+        'text'
+    ];
 }

@@ -38,5 +38,5 @@ Route::get('/share', [ShareController::class, 'index'])->name('share')->middlewa
 Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
 
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');
-Route::post('/editor', [EditorController::class, 'store'])->name('editor')->middleware('auth');
+Route::get('/editor/{id}', [EditorController::class, 'edit'])->name('edit')->middleware('auth');
 Route::get('/show', [EditorController::class, 'show'])->name('show')->middleware('auth');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\Editor;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,12 @@ class EditorController extends Controller
     public function index()
     {
         return view('editor');
+    }
+
+    public function edit(string $id)
+    {
+        $document = Document::buscaDocumento($id);
+        return view('editor')->with('document', $document);
     }
 
     /**
@@ -28,7 +35,7 @@ class EditorController extends Controller
      */
     public function show(Editor $editor)
     {
-        
+        //
     }
 
     /**

@@ -22,12 +22,21 @@
 
 <form method="POST" action="{{ route('upload') }}">
   @csrf
+
+  @if(isset($document->id))
+    <input type="hidden" name="id" id="id" value="{{ $document->id }}">
+  @endif
+
+  @if(isset($document->name))
+  <input type="text" name="name" id="name" value="{{ $document->name }}">
+  @else
   <input type="text" name="name" id="name">
+  @endif
+
   <textarea id="summernote" name="text">
 
-  @if(isset($text)){
-    {!! $text !!}
-  }
+  @if(isset($document->text))
+    {!! $document->text !!}
   @endif
 
   </textarea>
