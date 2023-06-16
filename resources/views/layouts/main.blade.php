@@ -25,10 +25,7 @@
             @yield('buttons')
         </div>
     </nav>
-    <hr>
 </header>
-
-
 
 <body class="m-1">
     <div class="container-fluid">

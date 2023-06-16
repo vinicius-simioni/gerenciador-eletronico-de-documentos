@@ -23,7 +23,14 @@
 <form method="POST" action="{{ route('upload') }}">
   @csrf
   <input type="text" name="name" id="name">
-  <textarea id="summernote" name="text"></textarea>
+  <textarea id="summernote" name="text">
+
+  @if(isset($text)){
+    {!! $text !!}
+  }
+  @endif
+
+  </textarea>
   <script>
     $(document).ready(function() {
       $('#summernote').summernote();

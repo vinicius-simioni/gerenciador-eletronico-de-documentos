@@ -19,45 +19,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', function () { return view('home'); });
 
 Route::get('/cadastro', [UserController::class, 'index'])->name('cadastro');
-
 Route::post('/cadastro', [UserController::class, 'store'])->name('cadastro');
-
 Route::get('/login', [UserController::class, 'login'])->name('login');
-
 Route::post('/login', [UserController::class, 'login'])->name('login');
-
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-
-
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
-
 Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
-
 Route::get('/dashboard/file/{id}/{name}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
 
-
-
-
 Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middleware('auth');
-
 Route::post('/upload', [UploadController::class, 'store'])->name('upload')->middleware('auth');
 
-
-
-
 Route::get('/share', [ShareController::class, 'index'])->name('share')->middleware('auth');
-
 Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
-
-
-
 
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');
 Route::post('/editor', [EditorController::class, 'store'])->name('editor')->middleware('auth');
