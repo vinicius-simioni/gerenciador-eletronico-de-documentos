@@ -64,9 +64,9 @@ class DashboardController extends Controller
 
     }
 
-    public function return_file(string $id, string $arquivo){
+    public function return_file(string $arquivo, string $id){
 
-        dd($arquivo);
+        dd($id);
 
         $file = Document::buscaDocumento($id);
 
