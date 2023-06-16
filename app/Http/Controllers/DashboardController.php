@@ -47,14 +47,14 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id, string $arquivo)
+    public function destroy(string $id, string $name)
     {
 
         $document = Document::findOrFail($id);
 
         $document->delete();
 
-        $caminho = public_path(auth()->user()->id."/".$arquivo);
+        $caminho = public_path(auth()->user()->id."/".$name);
 
         if(File::exists($caminho)){
             File::delete($caminho);
@@ -64,9 +64,15 @@ class DashboardController extends Controller
 
     }
 
-    public function return_file(string $arquivo){
+    public function return_file(string $id, string $arquivo){
 
-        
+        dd($arquivo);
+
+        $file = Document::buscaDocumento($id);
+
+        if(!empty($file->text)){
+            return redirect('rtf')->with($file);
+        }
 
         return response()->file(public_path(auth()->user()->id."/".$arquivo));
     }

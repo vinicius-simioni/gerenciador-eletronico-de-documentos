@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     use HasFactory;
+
+    public static function buscaDocumento($id) {
+        return self::find($id);
+    }
 }

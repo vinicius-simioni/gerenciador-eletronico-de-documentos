@@ -42,7 +42,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
 
-Route::get('/dashboard/{name}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
+Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
 
 
 
