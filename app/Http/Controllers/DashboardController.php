@@ -69,7 +69,7 @@ class DashboardController extends Controller
         $file = Document::buscaDocumento($id);
 
         if(!empty($file->text)){
-            return redirect('show')->with('file', $file->text);
+            return view('rtf')->with('text', $file->text);
         }
 
         return response()->file(public_path(auth()->user()->id."/".$arquivo));

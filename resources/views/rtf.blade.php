@@ -10,6 +10,6 @@
 
 @section('content')
 
-{{ $file->text }}
+{!! $text !!}
 
 @endsection
