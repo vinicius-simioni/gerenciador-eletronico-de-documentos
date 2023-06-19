@@ -13,7 +13,7 @@
 @section('content')
 
 
-<div class="mx-auto w-75">
+<div class="mx-auto w-75 mt-3">
   <table class="table table-striped-columns">
     <tr>
       <th>Nome</th>
@@ -24,8 +24,7 @@
     <tr>
       <td>{{ $dado->name }}</td>
       <td>{{ $dado->updated_at }}</td>
-
-      <td> 
+      <td class="text-center"> 
         <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger">Excluir</a>
 
         <a href="{{ route('dashboard/file', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-primary">Abrir</a>

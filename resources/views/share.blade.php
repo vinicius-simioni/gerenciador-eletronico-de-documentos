@@ -24,9 +24,9 @@
 <form method="POST" action="{{ route('share/store') }}">
   @csrf
   <input type="hidden" name="document_id" value="{{ $document_id }}">
-  <input type="checkbox" name="permissions" value="read"> Read
-  <input type="checkbox" name="permissions" value="edit"> Edit
-  <input type="checkbox" name="permissions" value="delete"> Delete
+  <input type="checkbox" name="read" value="true"> Ler
+  <input type="checkbox" name="edit" value="true"> Editar
+  <input type="checkbox" name="delete" value="true"> Excluir
   </td>
   <table class="table table-striped table-bordered w-75 mx-auto">
     <thead class="thead-dark">
@@ -39,7 +39,7 @@
     <tbody>
       @foreach ($dados as $usuario)
       <tr>
-        <td><input type="checkbox" name="shared_user_id[]" value="{{ $usuario->id }}"></td>
+        <td><input type="checkbox" name="shared_user_id" value="{{ $usuario->id }}"></td>
         <td>{{ $usuario->name }}</td>
         <td>{{ $usuario->email }}</td>
       </tr>

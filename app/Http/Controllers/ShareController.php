@@ -36,7 +36,15 @@ class ShareController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $share = new Share;
+
+        $share->document_id = $request->document_id;
+        $share->shared_user_id = $request->shared_user_id;
+        $share->read = $request->read;
+        $share->edit = $request->edit;
+        $share->delete = $request->delete;
+
+        $share->save();
     }
 
     /**

@@ -15,19 +15,36 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+    <style>
+        .bg-orange {
+            background-color: rgb(255, 186, 59);
+        }
+
+        *,
+        *:after,
+        *:before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+    </style>
+
 </head>
 
-<header>
 
-    <nav class="navbar">
-        <h1>Gerenciador de Documentos</h1>
+
+<header class="bg-orange">
+
+    <nav class="navbar mx-4">
+        <h2>Gerenciador de Documentos</h2>
         <div>
             @yield('buttons')
         </div>
     </nav>
 </header>
 
-<body class="m-1">
+<body>
     <div class="container-fluid">
         <div class="row">@yield('content')</div>
     </div>
