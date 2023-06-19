@@ -19,11 +19,15 @@
   </div>
 </form>
 
-
+<div>
 @if (isset($dados))
 <form method="POST" action="{{ route('share/store') }}">
   @csrf
   <input type="hidden" name="document_id" value="{{ $document_id }}">
+  <input type="checkbox" name="permissions" value="read"> Read
+  <input type="checkbox" name="permissions" value="edit"> Edit
+  <input type="checkbox" name="permissions" value="delete"> Delete
+  </td>
   <table class="table table-striped table-bordered w-75 mx-auto">
     <thead class="thead-dark">
       <tr>
@@ -35,7 +39,7 @@
     <tbody>
       @foreach ($dados as $usuario)
       <tr>
-        <td><input type="checkbox" name="shared_user_id" value="{{ $usuario->id }}"></td>
+        <td><input type="checkbox" name="shared_user_id[]" value="{{ $usuario->id }}"></td>
         <td>{{ $usuario->name }}</td>
         <td>{{ $usuario->email }}</td>
       </tr>
@@ -47,6 +51,7 @@
     <button type="submit" class="btn btn-primary float-right">Compartilhar</button>
   </div>
 </form>
+</div>
 @endif
 
 @endsection
