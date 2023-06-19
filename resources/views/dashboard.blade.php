@@ -24,10 +24,15 @@
     <tr>
       <td>{{ $dado->name }}</td>
       <td>{{ $dado->updated_at }}</td>
-      <td> <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger">Excluir</a>
+
+      <td> 
+        <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger">Excluir</a>
+
         <a href="{{ route('dashboard/file', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-primary">Abrir</a>
+
         <a href="{{ route('edit', ['id' => $dado['id']]) }}" class="btn btn-dark">Editar</a>
-        <a href="{{ route('share') }}" class="btn btn-secondary">Compartilhar</a>
+
+        <a href="{{ route('share', ['id' => $dado['id']]) }}" class="btn btn-secondary">Compartilhar</a>
       </td>
     </tr>
     @endforeach

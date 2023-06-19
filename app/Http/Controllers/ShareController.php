@@ -11,9 +11,9 @@ class ShareController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('share');
+        return view('share', ['document_id' => $id]);
     }
 
     public function get_names(Request $request) {
@@ -27,7 +27,7 @@ class ShareController extends Controller
         ->where('name', 'like', '%' . $name . '%')
         ->get();
 
-        return view('share', ['dados' => $users]);
+        return view('share', ['dados' => $users, 'document_id' => $request->document_id]);
 
     }
 
@@ -36,7 +36,7 @@ class ShareController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

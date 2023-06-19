@@ -34,8 +34,10 @@ Route::get('/dashboard/file/{id}/{name}', [DashboardController::class, 'return_f
 Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middleware('auth');
 Route::post('/upload', [UploadController::class, 'store'])->name('upload')->middleware('auth');
 
-Route::get('/share', [ShareController::class, 'index'])->name('share')->middleware('auth');
+Route::get('/share/{id}', [ShareController::class, 'index'])->name('share')->middleware('auth');
+Route::post('/share/store', [ShareController::class, 'store'])->name('share/store')->middleware('auth');
 Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
+
 
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');
 Route::get('/editor/{id}', [EditorController::class, 'edit'])->name('edit')->middleware('auth');

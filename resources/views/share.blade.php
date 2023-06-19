@@ -13,6 +13,7 @@
 <form class="form w-75 mx-auto mb-3" method="POST" action="{{ route('share/get_names') }}">
   @csrf
   <div class="d-flex">
+    <input type="hidden" name="document_id" value="{{ $document_id }}">
     <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome">
     <button type="submit" class="btn btn-primary">Buscar</button>
   </div>
@@ -20,8 +21,9 @@
 
 
 @if (isset($dados))
-<form method="POST" action="#">
+<form method="POST" action="{{ route('share/store') }}">
   @csrf
+  <input type="hidden" name="document_id" value="{{ $document_id }}">
   <table class="table table-striped table-bordered w-75 mx-auto">
     <thead class="thead-dark">
       <tr>
@@ -33,7 +35,7 @@
     <tbody>
       @foreach ($dados as $usuario)
       <tr>
-        <td><input type="checkbox" name="selecionar" value="{{ $usuario->id }}"></td>
+        <td><input type="checkbox" name="shared_user_id" value="{{ $usuario->id }}"></td>
         <td>{{ $usuario->name }}</td>
         <td>{{ $usuario->email }}</td>
       </tr>
@@ -42,7 +44,7 @@
   </table>
 
   <div class="text-right">
-    <button type="submit" class="btn btn-primary float-right">Enviar</button>
+    <button type="submit" class="btn btn-primary float-right">Compartilhar</button>
   </div>
 </form>
 @endif
