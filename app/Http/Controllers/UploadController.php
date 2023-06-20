@@ -21,7 +21,6 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $document = new Document;
-        $document->name = $request->name;
 
         if(!empty($request->text)){
             $document->name = $request->name;
@@ -37,15 +36,15 @@ class UploadController extends Controller
         }
 
         //Upload do arquivo
-        if($request->hasFile('nome') && $request->file('nome')->isValid()) {
+        if($request->hasFile('name') && $request->file('name')->isValid()) {
 
-            $requestArquivo = $request->nome;
+            $requestArquivo = $request->name;
 
             $nomeArquivo = $requestArquivo->getClientOriginalName();
 
             $requestArquivo->move(public_path($request->user()->id), $nomeArquivo);
 
-            $document->arquivo = $nomeArquivo;
+            $document->name = $nomeArquivo;
 
         }
 
