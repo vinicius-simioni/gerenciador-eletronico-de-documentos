@@ -20,6 +20,15 @@ class DashboardController extends Controller
         return view('dashboard', ['dados' => $dados]);
     }
 
+    public function shared_index()
+    {
+
+        $dados = Document::where('user_id', auth()->user()->id)
+                        ->get(); //seleciona dados banco
+
+        return view('dashboard_shared', ['dados' => $dados]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
