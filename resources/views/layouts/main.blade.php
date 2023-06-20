@@ -32,17 +32,22 @@
     <div class="container-fluid">
         <div class="row">
             @if($errors->any())
-            <ul>
+            <ul class="text-center mt-3" id="errors-list">
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-
+                <li class="list-unstyled alert alert-danger w-25 mx-auto error-message">{{ $error }}</li>
                 @endforeach
             </ul>
             @endif
-        @yield('content')
-    
-    </div>
-    </div>
+            <script>
+                function removeError() {
+                    var errorMessage = document.getElementById('errors-list');
+                    errorMessage.style.display = 'none';
+                }
+                setTimeout(removeError, 2000);
+            </script>
+            @yield('content')
+        </div>
+
 </body>
 
 </html>
