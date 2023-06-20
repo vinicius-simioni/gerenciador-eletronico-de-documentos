@@ -51,7 +51,21 @@ class ShareController extends Controller
      */
     public function show(Request $request)
     {
-        dd($request);
+        $share = new Share();
+        $docCompartilhado = $share->find($request->id);
+
+        //se não tiver permissão para deletar
+        if(!$docCompartilhado->delete){
+            return redirect('dashboard_shared');
+        }
+
+        $file = Document::buscaDocumento($docCompartilhado->document_id);
+
+        if(!empty($file->text)){
+            return view('rtf')->with('text', $file->text);
+        }
+
+        return response()->file(public_path(auth()->user()->id."/".$file->name));
     }
 
     /**
