@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShareRequest;
 use App\Models\Share;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,11 +17,7 @@ class ShareController extends Controller
         return view('share', ['document_id' => $id]);
     }
 
-    public function get_names(Request $request) {
-
-        if(empty($request->name)){
-            return view('share', ['document_id' => $request->document_id]);
-        }
+    public function get_names(ShareRequest $request) {
 
         $name = $request->input('name');
         $users = User::select('id', 'name', 'email')

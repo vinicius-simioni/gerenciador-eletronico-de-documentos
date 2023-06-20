@@ -37,7 +37,7 @@ Route::post('/upload', [UploadController::class, 'store'])->name('upload')->midd
 
 Route::get('/share/{id}', [ShareController::class, 'index'])->name('share')->middleware('auth');
 Route::post('/share/store', [ShareController::class, 'store'])->name('share/store')->middleware('auth');
-Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
+Route::post('/share/name', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
 
 
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');

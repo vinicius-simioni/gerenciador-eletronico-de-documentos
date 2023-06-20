@@ -10,13 +10,12 @@
 
 @section('content')
 
-@dump($errors);
-
 <form class="form w-75 mx-auto mb-3" method="POST" action="{{ route('share/get_names') }}">
   @csrf
+  @method('post')
   <div class="d-flex mt-3">
     <input type="hidden" name="document_id" value="{{ $document_id }}">
-    <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome do usuário">
+    <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome do usuário" value="{{ old('name') }}">
     <button type="submit ml-1" class="btn btn-primary">Buscar</button>
   </div>
 </form>
