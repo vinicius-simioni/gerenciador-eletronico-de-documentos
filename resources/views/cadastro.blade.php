@@ -14,15 +14,15 @@
     @csrf
     <div class="form-group">
         <label for="name">Nome</label>
-        <input type="text" class="form-control" id="name" placeholder="Digite seu nome" name="name">
+        <input type="text" class="form-control" id="name" placeholder="Digite seu nome" name="name" value="{{ old('name') }}">
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" placeholder="Digite seu email" name="email">
+        <input type="text" class="form-control" id="email" placeholder="Digite seu email" name="email" value="{{ old('email') }}">
     </div>
     <div class="form-group">
         <label for="password">Senha</label>
-        <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password">
+        <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password" value="{{ old('password') }}">
     </div>
     <button type="submit" class="btn btn-success mt-1">Cadastrar</button>
 </form>

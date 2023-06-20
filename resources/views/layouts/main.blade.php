@@ -20,7 +20,6 @@
 
 
 <header class="bg-secondary">
-
     <nav class="navbar mx-4">
         <h2 class="text-dark">Gerenciador de Documentos</h2>
         <div>
@@ -31,7 +30,18 @@
 
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row">@yield('content')</div>
+        <div class="row">
+            @if($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+
+                @endforeach
+            </ul>
+            @endif
+        @yield('content')
+    
+    </div>
     </div>
 </body>
 

@@ -18,8 +18,8 @@ class ShareController extends Controller
 
     public function get_names(Request $request) {
 
-        if($request == null){
-            die;
+        if(empty($request->name)){
+            return view('share', ['document_id' => $request->document_id]);
         }
 
         $name = $request->input('name');

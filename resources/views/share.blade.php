@@ -10,6 +10,8 @@
 
 @section('content')
 
+@dump($errors);
+
 <form class="form w-75 mx-auto mb-3" method="POST" action="{{ route('share/get_names') }}">
   @csrf
   <div class="d-flex mt-3">
