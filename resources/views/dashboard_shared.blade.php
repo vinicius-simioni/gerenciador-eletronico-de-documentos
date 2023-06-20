@@ -25,7 +25,7 @@
       <td>{{ $dado->name }}</td>
       <td>{{ $dado->updated_at }}</td>
       <td class="text-center"> 
-      <a onclick="confirmRedirect('{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}')" class="btn btn-danger">Excluir</a>
+        <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger" >Excluir</a>
 
         <a href="{{ route('dashboard/file', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-success">Abrir</a>
 
