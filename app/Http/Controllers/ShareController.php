@@ -49,17 +49,26 @@ class ShareController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Share $share)
+    public function show(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Share $share)
+    public function update(Request $request)
     {
-        //
+        $share = new Share();
+        $docCompartilhado = $share->find($request->id);
+
+        //se não tiver permissão para deletar
+        if(!$docCompartilhado->edit){
+            return redirect('dashboard_shared');
+        }
+
+        $document = Document::buscaDocumento($docCompartilhado->document_id);
+        return view('editor')->with('document', $document);
     }
 
     /**
@@ -69,7 +78,6 @@ class ShareController extends Controller
     {
         $share = new Share();
         $docCompartilhado = $share->find($request->id);
-
 
         //se não tiver permissão para deletar
         if(!$docCompartilhado->delete){

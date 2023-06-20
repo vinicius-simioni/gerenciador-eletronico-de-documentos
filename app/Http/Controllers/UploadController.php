@@ -21,10 +21,15 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $document = new Document;
+        $document = $document::buscaDocumento($request->id);
 
         if(!empty($request->text)){
             $document->name = $request->name;
-            $document->user_id = $request->user()->id;
+
+            if(empty($document->user_id)){
+                $document->user_id = $request->user()->id;
+            }
+
             $document->text = $request->text;
 
             if(isset($request->id)){
@@ -48,7 +53,9 @@ class UploadController extends Controller
 
         }
 
-        $document->user_id = $request->user()->id;
+        if(empty($document->user_id)){
+            $document->user_id = $request->user()->id;
+        }
 
         $document->text = null;
 
