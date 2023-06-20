@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\Share;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
@@ -24,10 +25,11 @@ class DashboardController extends Controller
     public function shared_index()
     {
 
-        $dados = Share::where('shared_user_id', auth()->user()->id)
-                        ->join('documents', 'document_id', '=', 'document_id')
-                        ->get(); //seleciona dados banco
-                        
+        $dados = DB::table('document_shares')
+            ->join('documents', 'document_id', '=', 'documents.id')
+            ->select('document_shares.id as id_share','*')
+            ->get();
+
         return view('dashboard_shared', ['dados' => $dados]);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ShareRequest;
+use App\Models\Document;
 use App\Models\Share;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -64,8 +65,23 @@ class ShareController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Share $share)
+    public function destroy(Request $request)
     {
-        //
+        $share = new Share();
+        $docCompartilhado = $share->find($request->id);
+
+
+        //se não tiver permissão para deletar
+        if(!$docCompartilhado->delete){
+            return redirect('dashboars_shared');
+        }
+
+        $document = new Document();
+        $docCompartilhado = $document->find($docCompartilhado->document_id);
+
+        $dashboardController = new DashboardController();
+        $dashboardController->destroy($docCompartilhado->id, $docCompartilhado->name);
+
+        return redirect('dashboars_shared');
     }
 }

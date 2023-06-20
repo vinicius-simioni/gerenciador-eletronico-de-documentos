@@ -38,6 +38,10 @@ Route::post('/upload', [UploadController::class, 'store'])->name('upload')->midd
 Route::get('/share/{id}', [ShareController::class, 'index'])->name('share')->middleware('auth');
 Route::post('/share/store', [ShareController::class, 'store'])->name('share/store')->middleware('auth');
 Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
+Route::post('/share/edit', [ShareController::class, 'update'])->name('share/edit')->middleware('auth');
+Route::post('/share/read', [ShareController::class, 'show'])->name('share/read')->middleware('auth');
+Route::delete('/share/delete', [ShareController::class, 'destroy'])->name('share/delete')->middleware('auth');
+
 
 
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');

@@ -21,17 +21,18 @@
       <th>Ações</th>
     </tr>
     @foreach($dados as $dado)
+    @dump($dado)
     <tr>
       <td>{{ $dado->name }}</td>
       <td>{{ $dado->updated_at }}</td>
       <td class="text-center"> 
-        <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger" >Excluir</a>
+        <form action="{{ route('share/delete') }}" method="POST">
+          @csrf
+          @method('delete')
+          <input type="hidden" name="id" value="{{ $dado->id_share }}">
+          <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
 
-        <a href="{{ route('dashboard/file', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-success">Abrir</a>
-
-        <a href="{{ route('edit', ['id' => $dado['id']]) }}" class="btn btn-primary">Editar</a>
-
-        <a href="{{ route('share', ['id' => $dado['id']]) }}" class="btn btn-secondary">Compartilhar</a>
       </td>
     </tr>
     @endforeach
