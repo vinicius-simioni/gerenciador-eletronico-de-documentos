@@ -19,18 +19,22 @@
   </div>
 </form>
 
-<div>
+
 @if (isset($dados))
-<form method="POST" action="{{ route('share/store') }}">
+<form method="POST" action="{{ route('share/store') }}" class="w-75 mx-auto">
   @csrf
   <input type="hidden" name="document_id" value="{{ $document_id }}">
 
-  <input type="checkbox" name="read" value="true"> Ler
-  <input type="checkbox" name="edit" value="true"> Editar
-  <input type="checkbox" name="delete" value="true"> Excluir
-  
+  <div>
+    <label class="font-weight-bold">Permissões: </label>
+    <input type="checkbox" id="read" name="read" value="true"> <label for="read">Ler</label>
+    <input type="checkbox" id="edit" name="edit" value="true"> <label for="edit">Editar</label>
+    <input type="checkbox" id="delete" name="delete" value="true"> <label for="delete">Excluir</label>
+  </div>
+
+
   </td>
-  <table class="table table-striped table-bordered w-75 mx-auto">
+  <table class="table table-striped table-bordered mt-3">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Selecionar</th>
@@ -53,7 +57,7 @@
     <button type="submit" class="btn btn-primary float-right">Compartilhar</button>
   </div>
 </form>
-</div>
+
 @endif
 
 @endsection
