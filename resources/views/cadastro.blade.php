@@ -10,7 +10,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('cadastro')}}" class="mx-auto w-25">
+<form method="POST" action="{{ route('cadastro')}}" class="mx-auto w-25 mt-3">
     @csrf
     <div class="form-group">
         <label for="name">Nome</label>

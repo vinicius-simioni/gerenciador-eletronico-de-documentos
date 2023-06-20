@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('login') }}" class="mx-auto w-25">
+    <form method="POST" action="{{ route('login') }}" class="mx-auto w-25 mt-3">
         @csrf
         <div class="form-group">
             <label for="email">Email</label>

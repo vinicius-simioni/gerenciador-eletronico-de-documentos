@@ -29,9 +29,9 @@
   @endif
 
   @if(isset($document->name))
-  <input type="text" name="name" id="name" value="{{ $document->name }}">
+  <input type="text" name="name" id="name" value="{{ $document->name }}" class="mb-3 form-control" placeholder="Título">
   @else
-  <input type="text" name="name" id="name">
+  <input type="text" name="name" id="name" class="mb-3 form-control" placeholder="Título">
   @endif
 
   <textarea id="summernote" name="text">
@@ -43,7 +43,11 @@
   </textarea>
   <script>
     $(document).ready(function() {
-      $('#summernote').summernote();
+      $('#summernote').summernote(
+        {
+          height:600,
+        }
+      );
     });
   </script>
   <button type="submit" class="btn btn-primary">salvar</button>

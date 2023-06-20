@@ -10,6 +10,9 @@
 
 @section('content')
 
+<div class="mt-3">
 {!! $text !!}
+</div>
+
 
 @endsection

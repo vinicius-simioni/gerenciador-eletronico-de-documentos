@@ -15,10 +15,10 @@
         <div class="form-group">
             <label for="arquivo" >Arquivo</label>
             <div>
-                <input type="file" class="form-control-file" id="arquivo" name="arquivo" placeholder="Insira aqui seu arquivo" required>
+                <input type="file" class="form-control-file" id="name" name="name" placeholder="Insira aqui seu arquivo" required>
             </div>
         </div>
-        <input type="submit" class="btn btn-secondary" value="Enviar arquivo">
+        <input type="submit" class="btn btn-secondary mt-3" value="Enviar arquivo">
     </form>
 
 </div>

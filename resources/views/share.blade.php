@@ -12,10 +12,10 @@
 
 <form class="form w-75 mx-auto mb-3" method="POST" action="{{ route('share/get_names') }}">
   @csrf
-  <div class="d-flex">
+  <div class="d-flex mt-3">
     <input type="hidden" name="document_id" value="{{ $document_id }}">
-    <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome">
-    <button type="submit" class="btn btn-primary">Buscar</button>
+    <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome do usuário">
+    <button type="submit ml-1" class="btn btn-primary">Buscar</button>
   </div>
 </form>
 
@@ -24,9 +24,11 @@
 <form method="POST" action="{{ route('share/store') }}">
   @csrf
   <input type="hidden" name="document_id" value="{{ $document_id }}">
+
   <input type="checkbox" name="read" value="true"> Ler
   <input type="checkbox" name="edit" value="true"> Editar
   <input type="checkbox" name="delete" value="true"> Excluir
+  
   </td>
   <table class="table table-striped table-bordered w-75 mx-auto">
     <thead class="thead-dark">
