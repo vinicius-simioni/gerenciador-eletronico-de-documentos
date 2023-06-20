@@ -45,6 +45,7 @@ class ShareController extends Controller
         $share->delete = $request->delete;
 
         $share->save();
+        return redirect()->route('dashboard');
     }
 
     /**
