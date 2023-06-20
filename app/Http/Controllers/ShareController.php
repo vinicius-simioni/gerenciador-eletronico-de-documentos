@@ -18,15 +18,15 @@ class ShareController extends Controller
         return view('share', ['document_id' => $id]);
     }
 
-    public function get_names(ShareRequest $request) {
+    public function get_names(ShareRequest $request)
+    {
 
         $name = $request->input('name');
         $users = User::select('id', 'name', 'email')
-        ->where('name', 'like', '%' . $name . '%')
-        ->get();
+            ->where('name', 'like', '%' . $name . '%')
+            ->get();
 
         return view('share', ['dados' => $users, 'document_id' => $request->document_id]);
-
     }
 
     /**
@@ -55,17 +55,17 @@ class ShareController extends Controller
         $docCompartilhado = $share->find($request->id);
 
         //se não tiver permissão para deletar
-        if(!$docCompartilhado->delete){
-            return redirect('dashboard_shared');
+        if (!$docCompartilhado->read) {
+            return redirect('dashboard/shared');
         }
 
         $file = Document::buscaDocumento($docCompartilhado->document_id);
 
-        if(!empty($file->text)){
+        if (!empty($file->text)) {
             return view('rtf')->with('text', $file->text);
         }
 
-        return response()->file(public_path(auth()->user()->id."/".$file->name));
+        return response()->file(public_path(auth()->user()->id . "/" . $file->name));
     }
 
     /**
@@ -77,12 +77,15 @@ class ShareController extends Controller
         $docCompartilhado = $share->find($request->id);
 
         //se não tiver permissão para deletar
-        if(!$docCompartilhado->edit){
-            return redirect('dashboard_shared');
+        if (!$docCompartilhado->edit) {
+            return redirect('dashboard/shared');
         }
 
         $document = Document::buscaDocumento($docCompartilhado->document_id);
-        return view('editor')->with('document', $document);
+        if (!empty($document->text)) {
+            return view('editor')->with('document', $document);
+        }
+        return redirect('dashboard/shared');
     }
 
     /**
@@ -94,8 +97,8 @@ class ShareController extends Controller
         $docCompartilhado = $share->find($request->id);
 
         //se não tiver permissão para deletar
-        if(!$docCompartilhado->delete){
-            return redirect('dashboars_shared');
+        if (!$docCompartilhado->delete) {
+            return redirect('dashboard/shared');
         }
 
         $document = new Document();
@@ -104,6 +107,6 @@ class ShareController extends Controller
         $dashboardController = new DashboardController();
         $dashboardController->destroy($docCompartilhado->id, $docCompartilhado->name);
 
-        return redirect('dashboars_shared');
+        return redirect('dashboard/shared');
     }
 }

@@ -21,7 +21,10 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $document = new Document;
-        $document = $document::buscaDocumento($request->id);
+        if(!empty($request->id)){
+            $document = $document::buscaDocumento($request->id);
+        }
+
 
         if(!empty($request->text)){
             $document->name = $request->name;
