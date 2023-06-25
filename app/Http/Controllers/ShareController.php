@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\Share;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShareController extends Controller
 {

@@ -17,7 +17,7 @@ class DashboardController extends Controller
     {
 
         $dados = Document::where('user_id', auth()->user()->id)
-                        ->get(); //seleciona dados banco
+            ->get(); //seleciona dados banco
 
         return view('dashboard', ['dados' => $dados]);
     }
@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
         $dados = DB::table('document_shares')
             ->join('documents', 'document_id', '=', 'documents.id')
-            ->select('document_shares.id as id_share','*')
+            ->select('document_shares.id as id_share', '*')
             ->get();
 
         return view('dashboard_shared', ['dados' => $dados]);
@@ -67,24 +67,56 @@ class DashboardController extends Controller
 
         $document->delete();
 
-        $caminho = public_path(auth()->user()->id."/".$name);
+        $caminho = public_path(auth()->user()->id . "/" . $name);
 
-        if(File::exists($caminho)){
+        if (File::exists($caminho)) {
             File::delete($caminho);
         }
 
         return redirect('dashboard');
-
     }
 
-    public function return_file(string $id, string $arquivo){
+    public function return_file(string $id, string $arquivo)
+    {
 
         $file = Document::buscaDocumento($id);
 
-        if(!empty($file->text)){
+        if (!empty($file->text)) {
             return view('rtf')->with('text', $file->text);
         }
 
-        return response()->file(public_path(auth()->user()->id."/".$arquivo));
+        return response()->file(public_path(auth()->user()->id . "/" . $arquivo));
+    }
+
+    public function sharedWith()
+    {
+        $result = DB::table('documents as d')
+            ->select('ds.id', 'd.name as doc_name', 'ds.shared_user_id', 'u.name as user_name', 'ds.read', 'ds.edit', 'ds.delete')
+            ->join('document_shares as ds', 'd.id', '=', 'ds.document_id')
+            ->join('users as u', 'ds.shared_user_id', '=', 'u.id')
+            ->where('d.user_id', '=', auth()->user()->id)
+            ->get();
+
+        return view('compartilhados')->with('dados', $result);
+    }
+
+    public function sharedUpdate(Request $request)
+    {
+        $dados = $request->except('_token');
+
+        foreach ($dados as $documentId => $permissions) {
+
+            foreach ($permissions as $key => $value) {
+                $document = Share::find($key);
+                if (isset($document)) {
+                    $document->read = isset($value['read']);
+                    $document->edit = isset($value['edit']);
+                    $document->delete = isset($value['delete']);
+                    $document->save();
+                }
+            }
+        }
+
+        return $this->sharedWith();
     }
 }

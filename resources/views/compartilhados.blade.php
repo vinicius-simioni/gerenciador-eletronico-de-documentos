@@ -11,45 +11,31 @@
 @endsection
 
 @section('content')
-
-
 <div class="mx-auto w-75 mt-3">
-  <table class="table table-striped-columns">
-    <tr>
-      <th>Nome</th>
-      <th>Adicionado em</th>
-      <th>Ações</th>
-    </tr>
-    @foreach($dados as $dado)
-    <tr>
-      <td>{{ $dado->name }}</td>
-      <td>{{ $dado->updated_at }}</td>
-      <td class="d-flex"> 
-        <form action="{{ route('share/delete') }}" method="POST">
-          @csrf
-          @method('delete')
-          <input type="hidden" name="id" value="{{ $dado->id_share }}">
-          <button type="submit" class="btn btn-danger">Excluir</button>
-        </form>
+  <form action="{{ route('sharedUpdate') }}" method="POST">
+    @csrf
 
-        <form action="{{ route('share/read') }}" method="POST">
-          @csrf
-          @method('post')
-          <input type="hidden" name="id" value="{{ $dado->id_share }}">
-          <button type="submit" class="btn btn-success">Ler</button>
-        </form>
+    <table class="table table-striped-columns">
+      <tr>
+        <th>Nome do documento</th>
+        <th>Compartilhado com</th>
+        <th>Permissões</th>
+      </tr>
+      @foreach($dados as $dado)
+      <tr>
+        <td>{{ $dado->doc_name }}</td>
+        <td>{{ $dado->user_name }}</td>
+        <td>
+          <input type="checkbox" name="permissions[{{ $dado->id }}][read]" value="1" {{ $dado->read ? 'checked' : '' }}> Ler
+          <input type="checkbox" name="permissions[{{ $dado->id }}][edit]" value="1" {{ $dado->edit ? 'checked' : '' }}> Editar
+          <input type="checkbox" name="permissions[{{ $dado->id }}][delete]" value="1" {{ $dado->delete ? 'checked' : '' }}> Excluir
 
-        <form action="{{ route('share/edit') }}" method="POST">
-          @csrf
-          @method('post')
-          <input type="hidden" name="id" value="{{ $dado->id_share }}">
-          <button type="submit" class="btn btn-primary">Editar</button>
-        </form>
-
-      </td>
-    </tr>
-    @endforeach
-  </table>
+        </td>
+      </tr>
+      @endforeach
+    </table>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+  </form>
 </div>
 
 
