@@ -95,6 +95,7 @@ class DashboardController extends Controller
             ->join('document_shares as ds', 'd.id', '=', 'ds.document_id')
             ->join('users as u', 'ds.shared_user_id', '=', 'u.id')
             ->where('d.user_id', '=', auth()->user()->id)
+            ->orderBy('ds.id')
             ->get();
 
         return view('compartilhados')->with('dados', $result);
