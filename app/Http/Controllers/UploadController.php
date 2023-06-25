@@ -46,6 +46,10 @@ class UploadController extends Controller
         //Upload do arquivo
         if($request->hasFile('name') && $request->file('name')->isValid()) {
 
+            $request->validate([
+                'name' => 'required|mimes:pdf,doc,docx',
+            ]);
+
             $requestArquivo = $request->name;
 
             $nomeArquivo = $requestArquivo->getClientOriginalName();
