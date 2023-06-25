@@ -118,6 +118,18 @@ class DashboardController extends Controller
             }
         }
 
-        return $this->sharedWith();
+        $result = DB::table('documents as d')
+            ->select('ds.id', 'd.name as doc_name', 'ds.shared_user_id', 'u.name as user_name', 'ds.read', 'ds.edit', 'ds.delete')
+            ->join('document_shares as ds', 'd.id', '=', 'ds.document_id')
+            ->join('users as u', 'ds.shared_user_id', '=', 'u.id')
+            ->where('d.user_id', '=', auth()->user()->id)
+            ->orderBy('ds.id')
+            ->get();
+
+
+            return redirect()->route('sharedWith')->with([
+                'dados' => $result,
+                'success' => 'Mensagem de sucesso!',
+            ]);
     }
 }

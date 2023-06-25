@@ -31,6 +31,14 @@
 <body class="bg-light">
     <div class="container-fluid">
         <div class="row">
+            @if(session()->has('success'))
+            <ul class="text-center mt-3" id="errors-list">
+                <li class="list-unstyled alert alert-success w-25 mx-auto error-message">
+                    {{ session('success') }}
+                </li>
+            </ul>
+            @endif
+
             @if($errors->any())
             <ul class="text-center mt-3" id="errors-list">
                 @foreach ($errors->all() as $error)
