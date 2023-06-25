@@ -21,30 +21,8 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $document = new Document;
-        if(!empty($request->id)){
-            $document = $document::buscaDocumento($request->id);
-        }
-
-
-        if(!empty($request->text)){
-            $document->name = $request->name;
-
-            if(empty($document->user_id)){
-                $document->user_id = $request->user()->id;
-            }
-
-            $document->text = $request->text;
-
-            if(isset($request->id)){
-                $document->id = $request->id;
-            }
-
-            $document->updateOrCreate(['id' => $document->id], $document->toArray());
-            return redirect('dashboard');
-        }
-
         //Upload do arquivo
-        if($request->hasFile('name') && $request->file('name')->isValid()) {
+        if ($request->hasFile('name') && $request->file('name')->isValid()) {
 
             $request->validate([
                 'name' => 'required|mimes:pdf,doc,docx',
@@ -58,18 +36,47 @@ class UploadController extends Controller
 
             $document->name = $nomeArquivo;
 
+            if (empty($document->user_id)) {
+                $document->user_id = $request->user()->id;
+            }
+
+            $document->text = null;
+
+            $document->save();
+
+            return redirect('dashboard');
         }
 
-        if(empty($document->user_id)){
-            $document->user_id = $request->user()->id;
+        //se chegar aqui, não é um arquivo
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        if (!empty($request->text)) {
+
+            if (!empty($request->id)) {
+                $document = $document::buscaDocumento($request->id);
+            }
+
+            $request->validate([
+                'name' => 'required',
+            ]);
+
+            $document->name = $request->name;
+
+            if (empty($document->user_id)) {
+                $document->user_id = $request->user()->id;
+            }
+
+            $document->text = $request->text;
+
+            if (isset($request->id)) {
+                $document->id = $request->id;
+            }
+
+            $document->updateOrCreate(['id' => $document->id], $document->toArray());
+            return redirect('dashboard');
         }
-
-        $document->text = null;
-
-        $document->save();
-
-        return redirect('dashboard');
-
     }
 
     /**
