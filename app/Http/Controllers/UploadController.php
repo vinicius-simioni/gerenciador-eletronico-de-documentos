@@ -44,7 +44,7 @@ class UploadController extends Controller
 
             $document->save();
 
-            return redirect('dashboard');
+            return redirect('dashboard')->with('success', 'Salvo com sucesso!');
         }
 
         //se chegar aqui, não é um arquivo
@@ -75,7 +75,7 @@ class UploadController extends Controller
             }
 
             $document->updateOrCreate(['id' => $document->id], $document->toArray());
-            return redirect('dashboard');
+            return redirect('dashboard')->with('success', 'Salvo com sucesso!');;
         }
     }
 

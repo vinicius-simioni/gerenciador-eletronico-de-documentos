@@ -8,6 +8,7 @@ use App\Models\Share;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\MessageBag;
 
 class ShareController extends Controller
 {
@@ -44,7 +45,7 @@ class ShareController extends Controller
         $share->delete = $request->delete;
 
         $share->save();
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Compartilhado com sucesso!');
     }
 
     /**
@@ -55,9 +56,10 @@ class ShareController extends Controller
         $share = new Share();
         $docCompartilhado = $share->find($request->id);
 
-        //se não tiver permissão para deletar
+        //se não tiver permissão para visualizar
         if (!$docCompartilhado->read) {
-            return redirect('dashboard/shared');
+            $errors = new MessageBag(['erro1' => 'Você não possui permissão para ler!']);
+            return redirect('dashboard/shared')->withErrors($errors);
         }
 
         $file = Document::buscaDocumento($docCompartilhado->document_id);
@@ -77,9 +79,10 @@ class ShareController extends Controller
         $share = new Share();
         $docCompartilhado = $share->find($request->id);
 
-        //se não tiver permissão para deletar
+        //se não tiver permissão para editar
         if (!$docCompartilhado->edit) {
-            return redirect('dashboard/shared');
+            $errors = new MessageBag(['erro1' => 'Você não possui permissão para editar!']);
+            return redirect('dashboard/shared')->withErrors($errors);
         }
 
         $document = Document::buscaDocumento($docCompartilhado->document_id);
@@ -99,7 +102,8 @@ class ShareController extends Controller
 
         //se não tiver permissão para deletar
         if (!$docCompartilhado->delete) {
-            return redirect('dashboard/shared');
+            $errors = new MessageBag(['erro1' => 'Você não possui permissão para excluir!']);
+            return redirect('dashboard/shared')->withErrors($errors);
         }
 
         $document = new Document();

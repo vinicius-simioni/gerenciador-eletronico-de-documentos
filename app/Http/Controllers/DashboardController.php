@@ -7,6 +7,7 @@ use App\Models\Share;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\MessageBag;
 
 class DashboardController extends Controller
 {
@@ -73,7 +74,7 @@ class DashboardController extends Controller
             File::delete($caminho);
         }
 
-        return redirect('dashboard');
+        return redirect('dashboard')->with('success', 'Excluído com sucesso!');
     }
 
     public function return_file(string $id, string $arquivo)
@@ -129,7 +130,7 @@ class DashboardController extends Controller
 
             return redirect()->route('sharedWith')->with([
                 'dados' => $result,
-                'success' => 'Mensagem de sucesso!',
+                'success' => 'Permissões atualizadas!',
             ]);
     }
 }
