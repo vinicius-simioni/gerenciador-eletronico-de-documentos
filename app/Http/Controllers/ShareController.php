@@ -89,7 +89,8 @@ class ShareController extends Controller
         if (!empty($document->text)) {
             return view('editor')->with('document', $document);
         }
-        return redirect('dashboard/shared');
+        $errors = new MessageBag(['erro1' => 'Você não pode editar esse formato de arquivo!']);
+        return redirect('dashboard/shared')->withErrors($errors);
     }
 
     /**
