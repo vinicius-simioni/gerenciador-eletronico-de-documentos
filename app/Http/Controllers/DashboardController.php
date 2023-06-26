@@ -141,7 +141,7 @@ class DashboardController extends Controller
     public function sharedWith()
     {
         $result = DB::table('documents as d')
-            ->select('ds.id', 'd.name as doc_name', 'ds.shared_user_id', 'u.name as user_name', 'ds.read', 'ds.edit', 'ds.delete')
+            ->select('ds.id', 'd.name as doc_name', 'd.created_at', 'ds.shared_user_id', 'u.name as user_name', 'ds.read', 'ds.edit', 'ds.delete')
             ->join('document_shares as ds', 'd.id', '=', 'ds.document_id')
             ->join('users as u', 'ds.shared_user_id', '=', 'u.id')
             ->where('d.user_id', '=', auth()->user()->id)
@@ -169,7 +169,7 @@ class DashboardController extends Controller
         }
 
         $result = DB::table('documents as d')
-            ->select('ds.id', 'd.name as doc_name', 'ds.shared_user_id', 'u.name as user_name', 'ds.read', 'ds.edit', 'ds.delete')
+            ->select('ds.id', 'd.name as doc_name', 'd.created_at', 'ds.shared_user_id', 'u.name as user_name', 'ds.read', 'ds.edit', 'ds.delete')
             ->join('document_shares as ds', 'd.id', '=', 'ds.document_id')
             ->join('users as u', 'ds.shared_user_id', '=', 'u.id')
             ->where('d.user_id', '=', auth()->user()->id)
@@ -181,5 +181,35 @@ class DashboardController extends Controller
             'dados' => $result,
             'success' => 'Permissões atualizadas!',
         ]);
+    }
+
+    public function filteredSharedWith(Request $request) {
+        $dados = DB::table('documents as d')
+        ->select('ds.id', 'd.name as doc_name', 'd.created_at', 'ds.shared_user_id', 'u.name as user_name', 'ds.read', 'ds.edit', 'ds.delete')
+        ->join('document_shares as ds', 'd.id', '=', 'ds.document_id')
+        ->join('users as u', 'ds.shared_user_id', '=', 'u.id')
+        ->where('d.user_id', '=', auth()->user()->id)
+        ->orderBy('ds.id');
+
+
+        if (!empty($request->name)) {
+            $name = $request->input('name');
+            $dados->where('d.name', 'like', '%'.$name.'%');
+        }
+
+        if (!empty($request->user_name)) {
+            $user_name = $request->input('user_name');
+            $dados->where('u.name', 'like', '%'.$user_name.'%');
+        }
+
+        if (!empty($request->start_date) && !empty($request->end_date)) {
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+            $dados->whereBetween('d.created_at', [$start_date, $end_date]);
+        }
+
+        $dados = $dados->get();
+
+        return view('compartilhados')->with('dados', $dados);
     }
 }

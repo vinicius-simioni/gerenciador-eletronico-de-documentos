@@ -33,6 +33,7 @@ Route::get('/dashboard/shared', [DashboardController::class, 'shared_index'])->n
 Route::post('/dashboard/shared', [DashboardController::class, 'filteredSharedIndex'])->name('filteredSharedIndex')->middleware('auth');
 Route::get('/dashboard/sharedWith', [DashboardController::class, 'sharedWith'])->name('sharedWith')->middleware('auth');
 Route::post('/dashboard/sharedUpdate', [DashboardController::class, 'sharedUpdate'])->name('sharedUpdate')->middleware('auth');
+Route::post('/dashboard/filteredSharedWith', [DashboardController::class, 'filteredSharedWith'])->name('filteredSharedWith')->middleware('auth');
 Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
 Route::delete('/dashboard/finalDestroy', [DashboardController::class, 'finalDestroy'])->name('dashboard/finalDestroy')->middleware('auth');
 Route::get('/dashboard/file/{id}/{name}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
