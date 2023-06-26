@@ -11,6 +11,7 @@
         @method('delete')
         <input type="hidden" name="id" value="{{ $id }}">
         <button type="submit" class="btn btn-danger mt-3">Excluir arquivo</button>
+        <button href="" type="button" class="btn btn-primary mt-3">Voltar</button>
     </form>
 
 </div>

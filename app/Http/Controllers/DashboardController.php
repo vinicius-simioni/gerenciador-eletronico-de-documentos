@@ -23,6 +23,27 @@ class DashboardController extends Controller
         return view('dashboard', ['dados' => $dados]);
     }
 
+    public function filteredIndex(Request $request)
+    {
+
+        $dados = Document::where('user_id', auth()->user()->id);
+
+        if (!empty($request->name)) {
+            $name = $request->input('name');
+            $dados->where('name', 'like', '%'.$name.'%');
+        }
+
+        if (!empty($request->start_date) && !empty($request->end_date)) {
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+            $dados->whereBetween('created_at', [$start_date, $end_date]);
+        }
+
+        $dados = $dados->get();
+
+        return view('dashboard', ['dados' => $dados]);
+    }
+
     public function shared_index()
     {
 
@@ -66,8 +87,9 @@ class DashboardController extends Controller
         return view('desejaexcluir')->with('id', $id);
     }
 
-    public function finalDestroy(Request $request) {
-        
+    public function finalDestroy(Request $request)
+    {
+
         $document = Document::findOrFail($request->id);
 
         $document->delete();
@@ -132,9 +154,9 @@ class DashboardController extends Controller
             ->get();
 
 
-            return redirect()->route('sharedWith')->with([
-                'dados' => $result,
-                'success' => 'Permissões atualizadas!',
-            ]);
+        return redirect()->route('sharedWith')->with([
+            'dados' => $result,
+            'success' => 'Permissões atualizadas!',
+        ]);
     }
 }

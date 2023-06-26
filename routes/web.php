@@ -28,6 +28,7 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::post('/dashboard', [DashboardController::class, 'filteredIndex'])->name('filteredIndex')->middleware('auth');
 Route::get('/dashboard/shared', [DashboardController::class, 'shared_index'])->name('dashboard/shared')->middleware('auth');
 Route::get('/dashboard/sharedWith', [DashboardController::class, 'sharedWith'])->name('sharedWith')->middleware('auth');
 Route::post('/dashboard/sharedUpdate', [DashboardController::class, 'sharedUpdate'])->name('sharedUpdate')->middleware('auth');

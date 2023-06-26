@@ -12,7 +12,6 @@
 
 @section('content')
 
-
 <div class="mx-auto w-75 mt-3">
   <table class="table table-striped-columns">
     <tr>
@@ -51,9 +50,5 @@
     @endforeach
   </table>
 </div>
-
-
-
-
 
 @endsection
