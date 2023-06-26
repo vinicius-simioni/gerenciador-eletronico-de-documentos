@@ -63,12 +63,16 @@ class DashboardController extends Controller
      */
     public function destroy(string $id, string $name)
     {
+        return view('desejaexcluir')->with('id', $id);
+    }
 
-        $document = Document::findOrFail($id);
+    public function finalDestroy(Request $request) {
+        
+        $document = Document::findOrFail($request->id);
 
         $document->delete();
 
-        $caminho = public_path(auth()->user()->id . "/" . $name);
+        $caminho = public_path(auth()->user()->id . "/" . $document->name);
 
         if (File::exists($caminho)) {
             File::delete($caminho);

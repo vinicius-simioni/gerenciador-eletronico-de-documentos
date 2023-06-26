@@ -32,6 +32,7 @@ Route::get('/dashboard/shared', [DashboardController::class, 'shared_index'])->n
 Route::get('/dashboard/sharedWith', [DashboardController::class, 'sharedWith'])->name('sharedWith')->middleware('auth');
 Route::post('/dashboard/sharedUpdate', [DashboardController::class, 'sharedUpdate'])->name('sharedUpdate')->middleware('auth');
 Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');
+Route::delete('/dashboard/finalDestroy', [DashboardController::class, 'finalDestroy'])->name('dashboard/finalDestroy')->middleware('auth');
 Route::get('/dashboard/file/{id}/{name}', [DashboardController::class, 'return_file'])->name('dashboard/file')->middleware('auth');
 
 Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middleware('auth');
@@ -43,8 +44,6 @@ Route::post('/share/edit', [ShareController::class, 'update'])->name('share/edit
 Route::post('/share/read', [ShareController::class, 'show'])->name('share/read')->middleware('auth');
 Route::delete('/share/delete', [ShareController::class, 'destroy'])->name('share/delete')->middleware('auth');
 Route::post('/share/{name?}', [ShareController::class, 'get_names'])->name('share/get_names')->middleware('auth');
-
-
 
 Route::get('/editor', [EditorController::class, 'index'])->name('editor')->middleware('auth');
 Route::get('/editor/{id}', [EditorController::class, 'edit'])->name('edit')->middleware('auth');

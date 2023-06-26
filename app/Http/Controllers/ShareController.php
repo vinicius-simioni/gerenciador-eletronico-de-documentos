@@ -110,9 +110,6 @@ class ShareController extends Controller
         $document = new Document();
         $docCompartilhado = $document->find($docCompartilhado->document_id);
 
-        $dashboardController = new DashboardController();
-        $dashboardController->destroy($docCompartilhado->id, $docCompartilhado->name);
-
-        return redirect('dashboard/shared');
+        return redirect()->route('dashboard/destroy', ['id' => $docCompartilhado->id,'name' => $docCompartilhado->name]);
     }
 }

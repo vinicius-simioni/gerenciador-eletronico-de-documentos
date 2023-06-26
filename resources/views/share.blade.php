@@ -16,10 +16,9 @@
   <div class="d-flex mt-3">
     <input type="hidden" name="document_id" value="{{ $document_id }}">
     <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome do usuário" value="{{ old('name') }}">
-    <button type="submit ml-1" class="btn btn-primary">Buscar</button>
+    <button type="submit" class="btn btn-primary ml-1">Buscar</button>
   </div>
 </form>
-
 
 @if (isset($dados))
 <form method="POST" action="{{ route('share/store') }}" class="w-75 mx-auto">
