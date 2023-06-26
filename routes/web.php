@@ -30,6 +30,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::post('/dashboard', [DashboardController::class, 'filteredIndex'])->name('filteredIndex')->middleware('auth');
 Route::get('/dashboard/shared', [DashboardController::class, 'shared_index'])->name('dashboard/shared')->middleware('auth');
+Route::post('/dashboard/shared', [DashboardController::class, 'filteredSharedIndex'])->name('filteredSharedIndex')->middleware('auth');
 Route::get('/dashboard/sharedWith', [DashboardController::class, 'sharedWith'])->name('sharedWith')->middleware('auth');
 Route::post('/dashboard/sharedUpdate', [DashboardController::class, 'sharedUpdate'])->name('sharedUpdate')->middleware('auth');
 Route::get('/dashboard/{id}/{name}', [DashboardController::class, 'destroy'])->name('dashboard/destroy')->middleware('auth');

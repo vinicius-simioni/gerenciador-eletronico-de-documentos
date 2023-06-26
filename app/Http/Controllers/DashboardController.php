@@ -55,6 +55,29 @@ class DashboardController extends Controller
         return view('dashboard_shared', ['dados' => $dados]);
     }
 
+    public function filteredSharedIndex(Request $request)
+    {
+
+        $dados = DB::table('document_shares')
+        ->join('documents', 'document_id', '=', 'documents.id')
+        ->select('document_shares.id as id_share', '*');
+
+        if (!empty($request->name)) {
+            $name = $request->input('name');
+            $dados->where('name', 'like', '%'.$name.'%');
+        }
+
+        if (!empty($request->start_date) && !empty($request->end_date)) {
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+            $dados->whereBetween('documents.created_at', [$start_date, $end_date]);
+        }
+
+        $dados = $dados->get();
+
+        return view('dashboard_shared', ['dados' => $dados]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
