@@ -5,8 +5,8 @@
 @section('buttons')
 
 <a href='/dashboard' class="btn btn-success">Meus Arquivos</a>
-<a href='/editor' class="btn btn-success">Criar</a>
-<a href="/logout" class="btn btn-secondary">Sair</a>
+<a href='/editor' class="btn btn-primary">Criar</a>
+<a href="/logout" class="btn btn-danger">Sair</a>
 
 @endsection
 

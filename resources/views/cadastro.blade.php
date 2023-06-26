@@ -4,7 +4,7 @@
 
 @section('buttons')
 
-<a href="/login" class="btn btn-secondary">Login</a>
+<a href="/login" class="btn btn-primary">Login</a>
 
 @endsection
 

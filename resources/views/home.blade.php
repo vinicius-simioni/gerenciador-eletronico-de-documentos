@@ -4,8 +4,8 @@
 
 @section('buttons')
 
-<a href="/cadastro" class="btn btn-secondary">Cadastre-se</a>
-<a href="/login" class="btn btn-secondary">Login</a>
+<a href="/cadastro" class="btn btn-primary">Cadastre-se</a>
+<a href="/login" class="btn btn-success">Login</a>
 
 @endsection
 

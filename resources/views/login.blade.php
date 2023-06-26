@@ -4,7 +4,7 @@
 
 @section('buttons')
 
-<a href="/cadastro" class="btn btn-secondary">Cadastre-se</a>
+<a href="/cadastro" class="btn btn-primary">Cadastre-se</a>
 
 @endsection
 
@@ -20,7 +20,7 @@
             <label for="password">Senha</label>
             <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password">
         </div>
-        <button type="submit" class="btn btn-success mt-1">Login</button>
+        <button type="submit" class="btn btn-primary mt-1">Login</button>
     </form>
 
 

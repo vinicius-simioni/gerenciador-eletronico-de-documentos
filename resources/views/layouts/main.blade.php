@@ -19,9 +19,9 @@
 
 
 
-<header class="bg-secondary">
+<header class="bg-dark">
     <nav class="navbar mx-4">
-        <h2 class="text-dark">Gerenciador de Documentos</h2>
+        <h3 class="text-white font-italic">Gerenciador de Documentos</h3>
         <div>
             @yield('buttons')
         </div>

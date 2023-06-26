@@ -4,7 +4,7 @@
 
 @section('buttons')
 
-<a href="/dashboard" class="btn btn-secondary">Voltar</a>
+<a href="/dashboard" class="btn btn-primary">Voltar</a>
 
 @endsection
 

@@ -5,9 +5,9 @@
 @section('buttons')
 
 <a href='/dashboard/sharedWith' class="btn btn-success">Documentos Compartilhados</a>
-<a href='/dashboard/shared' class="btn btn-success">Compartilhado Comigo</a>
-<a href='/editor' class="btn btn-success">Criar</a>
-<a href="/logout" class="btn btn-secondary">Sair</a>
+<a href='/dashboard/shared' class="btn btn-primary">Compartilhado Comigo</a>
+<a href='/editor' class="btn btn-secondary">Criar</a>
+<a href="/logout" class="btn btn-danger">Sair</a>
 
 @endsection
 
@@ -49,13 +49,15 @@
       <td>{{ $dado->name }}</td>
       <td>{{ $dado->updated_at }}</td>
       <td class="text-center">
-        <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger">Excluir</a>
+
 
         <a href="{{ route('dashboard/file', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-success">Abrir</a>
 
         <a href="{{ route('edit', ['id' => $dado['id']]) }}" class="btn btn-primary">Editar</a>
 
         <a href="{{ route('share', ['id' => $dado['id']]) }}" class="btn btn-secondary">Compartilhar</a>
+
+        <a href="{{ route('dashboard/destroy', ['id' => $dado['id'], 'name' => $dado['name']]) }}" class="btn btn-danger">Excluir</a>
       </td>
     </tr>
     @endforeach
