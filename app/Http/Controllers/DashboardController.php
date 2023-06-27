@@ -50,6 +50,7 @@ class DashboardController extends Controller
         $dados = DB::table('document_shares')
             ->join('documents', 'document_id', '=', 'documents.id')
             ->select('document_shares.id as id_share', '*')
+            ->where('shared_user_id', '=', auth()->user()->id)
             ->get();
 
         return view('dashboard_shared', ['dados' => $dados]);
@@ -60,7 +61,8 @@ class DashboardController extends Controller
 
         $dados = DB::table('document_shares')
         ->join('documents', 'document_id', '=', 'documents.id')
-        ->select('document_shares.id as id_share', '*');
+        ->select('document_shares.id as id_share', '*')
+        ->where('shared_user_id', '=', auth()->user()->id);
 
         if (!empty($request->name)) {
             $name = $request->input('name');
