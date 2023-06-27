@@ -24,7 +24,7 @@
         <label for="password">Senha</label>
         <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password" value="{{ old('password') }}">
     </div>
-    <button type="submit" class="btn btn-success mt-1">Cadastrar</button>
+    <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
 </form>
 
 @endsection

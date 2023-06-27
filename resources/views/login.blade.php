@@ -20,7 +20,7 @@
             <label for="password">Senha</label>
             <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password">
         </div>
-        <button type="submit" class="btn btn-primary mt-1">Login</button>
+        <button type="submit" class="btn btn-primary mt-3">Login</button>
     </form>
 
 
