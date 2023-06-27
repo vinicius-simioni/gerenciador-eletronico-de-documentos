@@ -125,6 +125,10 @@ class DashboardController extends Controller
             File::delete($caminho);
         }
 
+        if($document->user_id != auth()->user()->id){
+            return redirect('dashboard/shared')->with('success', 'Excluído com sucesso!');
+        }
+
         return redirect('dashboard')->with('success', 'Excluído com sucesso!');
     }
 
