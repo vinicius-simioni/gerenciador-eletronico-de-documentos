@@ -15,24 +15,24 @@
 
 <div class="mx-auto w-75 mt-3">
 
-  <form method="post" action="{{ route('filteredIndex') }}" class="d-flex justify-content-around mb-3">
+  <form method="post" action="{{ route('filteredIndex') }}" class="d-flex justify-content-center mb-3">
     @csrf
     <div class="d-flex justify-content-around align-items-center w-25">
-      <label for="name">Nome:</label>
+      <label for="name" style="width: 60px;">Nome:</label>
       <input type="text" id="name" name="name" class="form-control">
     </div>
 
     <div class="d-flex justify-content-around align-items-center w-25">
-      <label for="start_date text-nowrap">Data inicial:</label>
+      <label for="start_date text-nowrap" style="width: 115px; margin-left: 5px">Data inicial:</label>
       <input type="date" id="start_date" name="start_date" class="form-control">
     </div>
 
     <div class="d-flex justify-content-around align-items-center w-25">
-      <label for="end_date">Data final:</label>
+      <label for="end_date" style="width: 100px; margin-left: 5px">Data final:</label>
       <input type="date" id="end_date" name="end_date" class="form-control">
     </div>
     <div class="d-flex align-items-center">
-      <button type="submit" class="btn btn-primary">Filtrar</button>
+      <button type="submit" class="btn btn-primary" style="margin-left: 5px">Filtrar</button>
     </div>
   </form>
 
