@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Enviar arquivo')
+@section('title', 'Excluir arquivo')
 
 @section('content')
 

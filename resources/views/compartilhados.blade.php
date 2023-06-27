@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Dasboard')
+@section('title', 'Documentos compartilhados')
 
 @section('buttons')
 
@@ -11,6 +11,13 @@
 @endsection
 
 @section('content')
+
+@if($dados->isEmpty())
+<div class="mx-auto w-75 mt-3">
+  <p class="text-center">Você não possui nenhum documento</p>
+</div>
+@else
+
 <div class="mx-auto w-75 mt-3">
 
   <form method="post" action="{{ route('filteredSharedWith') }}" class="d-flex justify-content-around mb-3">
@@ -67,8 +74,6 @@
   </form>
 </div>
 
-
-
-
+@endif
 
 @endsection
