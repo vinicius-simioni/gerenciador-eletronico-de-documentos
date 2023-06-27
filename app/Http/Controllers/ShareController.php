@@ -124,4 +124,15 @@ class ShareController extends Controller
 
         return redirect()->route('sharedWith')->with('success', 'Compartilhamento removido com sucesso!');
     }
+
+    public function shareDeleteUser(string $id)
+    {
+        $share = Share::find($id);
+
+        if ($share) {
+            $share->delete();
+        }
+
+        return redirect()->route('dashboard/shared')->with('success', 'Compartilhamento removido com sucesso!');
+    }
 }

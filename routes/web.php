@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('home'); });
+Route::get('/', function () { return view('cadastro'); });
 
 Route::get('/cadastro', [UserController::class, 'index'])->name('cadastro');
 Route::post('/cadastro', [UserController::class, 'store'])->name('cadastro');
@@ -42,7 +42,8 @@ Route::get('/upload', [UploadController::class, 'index'])->name('upload')->middl
 Route::post('/upload', [UploadController::class, 'store'])->name('upload')->middleware('auth');
 
 Route::get('/share/{id}', [ShareController::class, 'index'])->name('share')->middleware('auth');
-Route::get('/share/remove/{id}', [ShareController::class, 'shareDelete'])->name('share/destroy');
+Route::get('/share/remove/{id}', [ShareController::class, 'shareDelete'])->name('share/destroy')->middleware('auth');
+Route::get('/share/user/remove/{id}', [ShareController::class, 'shareDeleteUser'])->name('share/user/destroy')->middleware('auth');
 Route::post('/share/store', [ShareController::class, 'store'])->name('share/store')->middleware('auth');
 Route::post('/share/edit', [ShareController::class, 'update'])->name('share/edit')->middleware('auth');
 Route::post('/share/read', [ShareController::class, 'show'])->name('share/read')->middleware('auth');
