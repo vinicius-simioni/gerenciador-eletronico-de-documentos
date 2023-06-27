@@ -4,8 +4,8 @@
 
 @section('buttons')
 
-<a href="/upload" class="btn btn-primary">Upload de Arquivo</a>
-<a href="/dashboard" class="btn btn-success">Voltar</a>
+<a href="/upload" class="btn btn-secondary">Upload de Arquivo</a>
+<a href="/dashboard" class="btn btn-primary">Voltar</a>
 
 @endsection
 

@@ -18,7 +18,7 @@
                 <input type="file" class="form-control-file" id="name" name="name" required>
             </div>
         </div>
-        <input type="submit" class="btn btn-secondary mt-3" value="Enviar arquivo">
+        <input type="submit" class="btn btn-primary mt-3" value="Enviar arquivo">
     </form>
 
 </div>

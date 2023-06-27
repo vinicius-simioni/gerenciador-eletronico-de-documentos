@@ -4,8 +4,8 @@
 
 @section('buttons')
 
-<a href='/dashboard/sharedWith' class="btn btn-success">Documentos Compartilhados</a>
-<a href='/dashboard/shared' class="btn btn-primary">Compartilhado Comigo</a>
+<a href='/dashboard/sharedWith' class="btn btn-secondary">Documentos Compartilhados</a>
+<a href='/dashboard/shared' class="btn btn-secondary">Compartilhado Comigo</a>
 <a href='/editor' class="btn btn-secondary">Criar</a>
 <a href="/logout" class="btn btn-danger">Sair</a>
 

@@ -16,6 +16,7 @@
   <div class="d-flex mt-3">
     <input type="hidden" name="document_id" value="{{ $document_id }}">
     <input type="text" class="form-control mr-1" name="name" id="name" placeholder="Digite o nome do usuário" value="{{ old('name') }}">
+    <div style="width: 5px;"></div>
     <button type="submit" class="btn btn-primary ml-1">Buscar</button>
   </div>
 </form>

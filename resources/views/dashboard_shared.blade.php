@@ -4,8 +4,8 @@
 
 @section('buttons')
 
-<a href='/dashboard' class="btn btn-success">Meus Arquivos</a>
-<a href='/editor' class="btn btn-primary">Criar</a>
+<a href='/dashboard' class="btn btn-secondary">Meus Arquivos</a>
+<a href='/editor' class="btn btn-secondary">Criar</a>
 <a href="/logout" class="btn btn-danger">Sair</a>
 
 @endsection
@@ -47,13 +47,7 @@
     <tr>
       <td>{{ $dado->name }}</td>
       <td>{{ $dado->updated_at }}</td>
-      <td class="d-flex">
-        <form action="{{ route('share/delete') }}" method="POST">
-          @csrf
-          @method('delete')
-          <input type="hidden" name="id" value="{{ $dado->id_share }}">
-          <button type="submit" class="btn btn-danger">Excluir</button>
-        </form>
+      <td class="d-flex justify-content-center">
 
         <form action="{{ route('share/read') }}" method="POST">
           @csrf
@@ -62,11 +56,22 @@
           <button type="submit" class="btn btn-success">Ler</button>
         </form>
 
+        <div style="width: 5px;"></div>
+
         <form action="{{ route('share/edit') }}" method="POST">
           @csrf
           @method('post')
           <input type="hidden" name="id" value="{{ $dado->id_share }}">
           <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
+
+        <div style="width: 5px;"></div>
+
+        <form action="{{ route('share/delete') }}" method="POST">
+          @csrf
+          @method('delete')
+          <input type="hidden" name="id" value="{{ $dado->id_share }}">
+          <button type="submit" class="btn btn-danger">Excluir</button>
         </form>
 
       </td>

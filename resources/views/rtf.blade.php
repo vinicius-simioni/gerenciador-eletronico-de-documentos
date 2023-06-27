@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="mt-3">
+<div class="mt-3 w-75 mx-auto">
 {!! $text !!}
 </div>
 
