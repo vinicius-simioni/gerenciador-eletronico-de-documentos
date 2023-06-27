@@ -78,7 +78,7 @@ class UploadController extends Controller
 
             $document->updateOrCreate(['id' => $document->id], $document->toArray());
 
-            if(!empty($existsId)){
+            if($document->user_id != auth()->user()->id){
                 return redirect('dashboard/shared')->with('success', 'Salvo com sucesso!');
             }
 
