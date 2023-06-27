@@ -18,6 +18,7 @@ class DashboardController extends Controller
     {
 
         $dados = Document::where('user_id', auth()->user()->id)
+            ->orderBy('id')
             ->get(); //seleciona dados banco
 
         return view('dashboard', ['dados' => $dados]);
@@ -38,7 +39,7 @@ class DashboardController extends Controller
             $end_date = $request->input('end_date');
             $dados->whereBetween('created_at', [$start_date, $end_date]);
         }
-
+        $dados->orderBy('id');
         $dados = $dados->get();
 
         return view('dashboard', ['dados' => $dados]);
@@ -51,6 +52,7 @@ class DashboardController extends Controller
             ->join('documents', 'document_id', '=', 'documents.id')
             ->select('document_shares.id as id_share', '*')
             ->where('shared_user_id', '=', auth()->user()->id)
+            ->orderBy('documents.id')
             ->get();
 
         return view('dashboard_shared', ['dados' => $dados]);
@@ -62,7 +64,8 @@ class DashboardController extends Controller
         $dados = DB::table('document_shares')
         ->join('documents', 'document_id', '=', 'documents.id')
         ->select('document_shares.id as id_share', '*')
-        ->where('shared_user_id', '=', auth()->user()->id);
+        ->where('shared_user_id', '=', auth()->user()->id)
+        ->orderBy('documents.id');
 
         if (!empty($request->name)) {
             $name = $request->input('name');

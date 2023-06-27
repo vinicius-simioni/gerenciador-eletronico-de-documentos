@@ -101,7 +101,6 @@ class ShareController extends Controller
     {
         $share = new Share();
         $docCompartilhado = $share->find($request->id);
-
         //se não tiver permissão para deletar
         if (!$docCompartilhado->delete) {
             $errors = new MessageBag(['erro1' => 'Você não possui permissão para excluir!']);

@@ -76,7 +76,7 @@
           <button type="submit" class="btn btn-danger">Excluir</button>
         </form>
 
-        <a href="/share/user/remove/{{ $dado->id }}" class="btn btn-danger" style="margin-left: 5px;">Remover</a>
+        <a href="/share/user/remove/{{ $dado->id_share }}" class="btn btn-danger" style="margin-left: 5px;">Remover</a>
 
       </td>
     </tr>
