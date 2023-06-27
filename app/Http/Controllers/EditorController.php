@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\Editor;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 
 class EditorController extends Controller
 {
@@ -19,6 +20,10 @@ class EditorController extends Controller
     public function edit(string $id)
     {
         $document = Document::buscaDocumento($id);
+        if (empty($document->text)) {
+            $errors = new MessageBag(['erro1' => 'Você não pode editar esse formato de arquivo!']);
+            return redirect('dashboard')->withErrors($errors);
+        }
         return view('editor')->with('document', $document);
     }
 
