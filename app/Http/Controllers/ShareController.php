@@ -69,7 +69,7 @@ class ShareController extends Controller
             return view('rtf')->with('text', $file->text);
         }
 
-        return response()->file(public_path(auth()->user()->id . "/" . $file->name));
+        return response()->file(public_path($file->user_id . "/" . $file->name));
     }
 
     /**
