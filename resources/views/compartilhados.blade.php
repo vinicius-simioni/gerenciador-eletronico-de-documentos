@@ -14,10 +14,9 @@
 
 @if($dados->isEmpty())
 <div class="mx-auto w-75 mt-3">
-  <p class="text-center">Você não possui nenhum documento</p>
+  <p class="text-center">Você não possui nenhum documento compartilhado</p>
 </div>
 @else
-
 <div class="mx-auto w-75 mt-3">
 
   <form method="post" action="{{ route('filteredSharedWith') }}" class="d-flex justify-content-around mb-3">
@@ -65,7 +64,7 @@
           <input type="checkbox" name="permissions[{{ $dado->id }}][read]" value="1" {{ $dado->read ? 'checked' : '' }}> Ler
           <input type="checkbox" name="permissions[{{ $dado->id }}][edit]" value="1" {{ $dado->edit ? 'checked' : '' }}> Editar
           <input type="checkbox" name="permissions[{{ $dado->id }}][delete]" value="1" {{ $dado->delete ? 'checked' : '' }}> Excluir
-
+          <a href="/share/remove/{{ $dado->id }}">Remover</a>
         </td>
       </tr>
       @endforeach

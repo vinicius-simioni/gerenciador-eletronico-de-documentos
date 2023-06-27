@@ -14,7 +14,7 @@
 
 @if($dados->isEmpty())
 <div class="mx-auto w-75 mt-3">
-  <p class="text-center">Você não possui nenhum documento</p>
+  <p class="text-center">Nenhum documento está compartilhado com você</p>
 </div>
 @else
 

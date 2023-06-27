@@ -111,6 +111,17 @@ class ShareController extends Controller
         $document = new Document();
         $docCompartilhado = $document->find($docCompartilhado->document_id);
 
-        return redirect()->route('dashboard/destroy', ['id' => $docCompartilhado->id,'name' => $docCompartilhado->name]);
+        return redirect()->route('dashboard/destroy', ['id' => $docCompartilhado->id, 'name' => $docCompartilhado->name]);
+    }
+
+    public function shareDelete(string $id)
+    {
+        $share = Share::find($id);
+
+        if ($share) {
+            $share->delete();
+        }
+
+        return redirect()->route('sharedWith')->with('success', 'Compartilhamento removido com sucesso!');
     }
 }
